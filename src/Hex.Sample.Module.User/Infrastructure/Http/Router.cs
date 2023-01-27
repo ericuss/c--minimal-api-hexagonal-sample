@@ -10,7 +10,7 @@ public static class Router
         //const string route = "/api/v{version:apiVersion}/users";
         const string route = "/api/users";
 
-        app.MapGet(route, GetAllUsersFeature.Handle);
+        app.MapGet(route, _ => GetAllUsersFeature.Handle());
         return app;
     }
 }
