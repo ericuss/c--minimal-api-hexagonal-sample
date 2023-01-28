@@ -21,7 +21,11 @@ public class CustomCosmosClient
 
                 return new HttpClient(httpMessageHandler);
             },
-            ConnectionMode = ConnectionMode.Gateway
+            ConnectionMode = ConnectionMode.Gateway,
+            SerializerOptions = new CosmosSerializationOptions
+            {
+                PropertyNamingPolicy = CosmosPropertyNamingPolicy.CamelCase
+            }
         };
 
         _client = new CosmosClient(

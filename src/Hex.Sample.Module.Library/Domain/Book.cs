@@ -1,4 +1,6 @@
-﻿namespace Hex.Sample.Module.Library.Domain;
+﻿using Newtonsoft.Json;
+
+namespace Hex.Sample.Module.Library.Domain;
 
 public class Book
 {

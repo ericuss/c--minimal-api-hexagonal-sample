@@ -9,6 +9,7 @@ namespace Hex.Sample.Module.Library.Infrastructure.Repositories
     public interface IBookRepository
     {
         Task<List<Book>> GetAll();
+        Task<ItemResponse<Domain.Book>> Create(Domain.Book entity);
     }
 
     public class BookRepository : IBookRepository
@@ -40,6 +41,11 @@ namespace Hex.Sample.Module.Library.Infrastructure.Repositories
             }
 
             return results;
+        }
+
+        public Task<ItemResponse<Domain.Book>> Create(Domain.Book entity)
+        {
+            return _client.Container.CreateItemAsync(entity);
         }
     }
 }
