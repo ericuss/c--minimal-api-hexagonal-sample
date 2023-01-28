@@ -23,6 +23,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hex.Sample.Module.User.Inte
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{34651F32-7531-469D-80D2-55027B857E83}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hex.Sample.Infrastructure", "src\Hex.Sample.Infrastructure\Hex.Sample.Infrastructure.csproj", "{57787C3E-43FF-4A04-939B-45AA5214BAA2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "repo", "repo", "{60FD001B-47E3-44F5-A684-9681DFA330CB}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Makefile = Makefile
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +61,10 @@ Global
 		{34651F32-7531-469D-80D2-55027B857E83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34651F32-7531-469D-80D2-55027B857E83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34651F32-7531-469D-80D2-55027B857E83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57787C3E-43FF-4A04-939B-45AA5214BAA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57787C3E-43FF-4A04-939B-45AA5214BAA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57787C3E-43FF-4A04-939B-45AA5214BAA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57787C3E-43FF-4A04-939B-45AA5214BAA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +78,7 @@ Global
 		{EC5AF758-0FC3-4318-8446-49A0A7210C5C} = {9B63EF80-7912-4ED1-BD55-6C30D00021CC}
 		{37429894-0AD4-4A16-8812-865E6FCA9191} = {9B63EF80-7912-4ED1-BD55-6C30D00021CC}
 		{0F3F048A-E738-4898-9D6A-584CA13A7570} = {37429894-0AD4-4A16-8812-865E6FCA9191}
+		{57787C3E-43FF-4A04-939B-45AA5214BAA2} = {9B63EF80-7912-4ED1-BD55-6C30D00021CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DA1851E8-76A0-48B0-9B6B-09EABADFCBF8}
