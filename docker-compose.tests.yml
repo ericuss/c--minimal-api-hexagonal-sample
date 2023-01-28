@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  integration-tests:
+    image: ${DOCKER_REGISTRY-}hexsample-module-user-integrationtests
+    build:
+      context: .
+      dockerfile: src/Hex.Sample.Module.User.IntegrationTests/Dockerfile
+      target: integrationtests
+    entrypoint:
+      - dotnet
+      - test
+      - --logger
+      - trx;LogFileName=/tests/integration-tests-results.xml
