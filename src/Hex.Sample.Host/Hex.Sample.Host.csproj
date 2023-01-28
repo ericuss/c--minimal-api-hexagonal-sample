@@ -11,6 +11,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Hex.Sample.Module.Library\Hex.Sample.Module.Library.csproj" />
 		<ProjectReference Include="..\Hex.Sample.Module.User\Hex.Sample.Module.User.csproj" />
 	</ItemGroup>
 

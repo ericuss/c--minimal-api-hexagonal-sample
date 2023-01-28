@@ -1,4 +1,4 @@
-﻿using Hex.Sample.Sdk.Contracts;
+﻿using Hex.Sample.Sdk.Contracts.Users;
 
 namespace Hex.Sample.Sdk.Clients
 {

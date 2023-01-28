@@ -1,5 +1,7 @@
 using Hex.Sample.Module.User.Infrastructure.Http;
+using Hex.Sample.Module.Library.Infrastructure.Http;
 using Hex.Sample.Module.User;
+using Hex.Sample.Module.Library;
 using Hex.Sample.Infrastructure.Contexts;
 using Microsoft.Extensions.Options;
 
@@ -9,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services
     .ConfigureUsers(builder.Configuration)
+    .ConfigureLibrary(builder.Configuration)
     ;
 
 
@@ -29,6 +32,7 @@ if (app.Environment.IsDevelopment())
 
 app
     .RegisterUserRoutes()
+    .RegisterLibraryRoutes()
     .MapGet("/", () => "Hello World!")
     ;
 

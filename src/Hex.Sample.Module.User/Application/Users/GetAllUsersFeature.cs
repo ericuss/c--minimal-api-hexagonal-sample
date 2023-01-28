@@ -1,18 +1,14 @@
+using Hex.Sample.Module.User.Infrastructure.Database;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 
-namespace Hex.Sample.Module.User.Application.Users
+namespace Hex.Sample.Module.User.Application.Users;
+
+public static class GetAllUsersFeature
 {
-    public static class GetAllUsersFeature
+    public static async Task<IResult> Handle(UsersContext context)
     {
-        public static Task<IResult> Handle()
-        {
-            var entities = new List<Sdk.Contracts.User>(){
-                                new Sdk.Contracts.User{Name = "User 01"},
-                                new Sdk.Contracts.User{Name = "User 02"},
-                            };
-
-            return Task.FromResult(Results.Ok(entities));
-        }
+        var entities = await context.Users.ToListAsync();  
+        return Results.Ok(entities);
     }
-
 }

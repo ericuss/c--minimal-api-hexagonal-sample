@@ -3,17 +3,38 @@ version: '3.4'
 services:
   sql:
     image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql
     environment:
       - MSSQL_SA_PASSWORD=Pass@word
       - ACCEPT_EULA=Y
     ports:
-      - "5434:1433" 
+      - "5434:1433"
     healthcheck:
-        test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "Pass@word" -Q "SELECT 1" || exit 1
-        interval: 10s
-        timeout: 3s
-        retries: 10
-        start_period: 10s
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "Pass@word" -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  cosmosdb:
+    image: mcr.microsoft.com/cosmosdb/linux/azure-cosmos-emulator:latest
+    container_name: cosmosdb
+    privileged: true
+    ports:
+      - "8081:8081"
+      - "10251:10251"
+      - "10252:10252"
+      - "10253:10253"
+      - "10254:10254"
+    environment:
+      AZURE_COSMOS_EMULATOR_PARTITION_COUNT: 10
+      AZURE_COSMOS_EMULATOR_ENABLE_DATA_PERSISTENCE: "false"
+    healthcheck:
+      test: "curl -f localhost:8081"
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
   api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
@@ -21,7 +42,9 @@ services:
       - https_port=7443
       - Kestrel__Certificates__Default__Path=./certs/devcert.pfx
       - Kestrel__Certificates__Default__Password=Passw@rd
-      - Sql__ConnectionString=${Users_DB:-Server=sql;Database=HexSampleDb;User Id=sa;Password=Pass@word; TrustServerCertificate=True}
+      - Sql__ConnectionString=${Sql_ConnectonString:-Server=sql;Database=HexSampleDb;User Id=sa;Password=Pass@word; TrustServerCertificate=True}
+      - Cosmos__ConnectionString=${Cosmos_ConnectionString:-AccountEndpoint=https://host.docker.internal:8081;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==;}
+
     ports:
       - "6080:80"
       - "6443:443"
@@ -29,4 +52,5 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
     depends_on:
-    - sql
+      - sql
+      - cosmosdb

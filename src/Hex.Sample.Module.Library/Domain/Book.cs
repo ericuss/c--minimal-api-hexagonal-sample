@@ -1,8 +1,8 @@
-namespace Hex.Sample.Module.User.Domain;
+﻿namespace Hex.Sample.Module.Library.Domain;
 
-public class User
+public class Book
 {
-    private User()
+    private Book()
     {
         Id = Guid.NewGuid();
     }
@@ -13,7 +13,7 @@ public class User
 
 
 
-    public User SetName(string? name)
+    public Book SetName(string? name)
     {
         //refactor to use result (maybe pattern)
         if (string.IsNullOrWhiteSpace(name))
@@ -35,9 +35,9 @@ public class User
             return this;
         }
 
-        public User Build()
+        public Book Build()
         {
-            var entity = new User()
+            var entity = new Book()
                 .SetName(this.name)
             ;
 

@@ -1,5 +1,5 @@
 ﻿using Hex.Sample.Sdk.Constants;
-using Hex.Sample.Sdk.Contracts;
+using Hex.Sample.Sdk.Contracts.Users;
 using Newtonsoft.Json;
 
 namespace Hex.Sample.Sdk.Clients
